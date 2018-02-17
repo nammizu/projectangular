@@ -20,7 +20,7 @@
       <!--Card content-->
       <div class="card-body">
         <!--Title-->
-        <h4 class="card-title">Card title</h4>
+        <h4 class="card-title">{{list.name}}</h4>
         <!--Text-->
         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
         <button (click)="onSelect(list)" routerLink="/product/{{list.id}}" type="button" class="btn btn-danger waves-light" mdbRippleRadius>Read More</button>
