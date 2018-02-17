@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Product, PRODUCTS } from '../product/productList';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
+import { CurrencyPipe } from '@angular/common';
 
 import { ProductService } from '../product.service';
 

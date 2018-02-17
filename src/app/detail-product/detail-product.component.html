@@ -3,7 +3,8 @@
 
   <!--Card image-->
   <div class="view overlay hm-white-slight waves-light" mdbRippleRadius>
-    <img src="https://mdbootstrap.com/img/Photos/Slides/img%20(70).jpg" class="img-fluid">
+    <img *ngIf="!product.img" src="https://mdbootstrap.com/img/Photos/Slides/img%20(70).jpg" class="img-fluid z-depth-2">
+    <img *ngIf="product.img" style="width:100%" src="assets/img/{{product.img}}" class="img-fluid z-depth-2">
     <a>
       <div class="mask"></div>
     </a>
@@ -17,10 +18,13 @@
       <strong>{{ product.name | uppercase }}</strong>
     </h4>
     <h5 class="indigo-text">
-      <strong>{{product.date}}</strong>
+      <strong>Release Date: {{product.date}}</strong>
+    </h5>
+    <h5 *ngIf="product.price != null" class="indigo-text">
+      <strong>Price :{{product.price | currency}}</strong>
     </h5>
 
-    <p class="card-text">Sed ut perspiciatis unde omnis iste natus sit voluptatem accusantium doloremque laudantium, totam rem aperiam.
+    <p class="card-text">{{product.desc}}
     </p>
 
     <button (click)="goBack()" type="button" class="btn btn-danger waves-light pull-right margin-top" mdbRippleRadius>BACK</button>

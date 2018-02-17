@@ -11,20 +11,27 @@
   </div>
 </div>
 <div class="row text-center">
-  <div *ngFor="let list of products| slice:0:show; let i=index" class="col-md-4" style="margin-bottom:20px;">
+  <div *ngFor="let list of products| slice:0:show; let i=index" class="col-md-4" style="margin-bottom:20px">
     <div class="card">
 
       <!--Card image-->
-      <img class="img-fluid" src="https://mdbootstrap.com/img/Photos/Lightbox/Thumbnail/img%20(97).jpg" alt="Card image cap">
+      <div class="view overlay hm-zoom" mdbRippleRadius>
+        <img *ngIf="!list.img" class="img-fluid z-depth-2" src="https://mdbootstrap.com/img/Photos/Lightbox/Thumbnail/img%20(97).jpg">
+        <img *ngIf="list.img" class="img-fluid z-depth-2" src="assets/img/{{list.img}}">
+        <div class="mask flex-center waves-effect waves-light" routerLink="/product/{{list.id}}">
+          <p class="white-text">{{list.name}}</p>
+      </div>
+      </div>
 
       <!--Card content-->
-      <div class="card-body">
+      <div class="card-body" style="height:150px;overflow:auto">
         <!--Title-->
-        <h4 class="card-title">{{list.name}}</h4>
+        <h5 class="card-title">{{list.name}}</h5>
         <!--Text-->
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        <button (click)="onSelect(list)" routerLink="/product/{{list.id}}" type="button" class="btn btn-danger waves-light" mdbRippleRadius>Read More</button>
+        <p class="card-text">{{list.desc | slice:0:50}}...</p>
       </div>
+      <button (click)="onSelect(list)" routerLink="/product/{{list.id}}" type="button" class="btn btn-danger waves-light" mdbRippleRadius>Read More</button>
+
 
     </div>
   </div>
