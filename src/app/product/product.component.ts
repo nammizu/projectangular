@@ -11,12 +11,11 @@ import { ProductService } from '../product.service';
 })
 export class ProductComponent implements OnInit {
   show = 6;
-  products: Product[];
+  products: Product[] = [];
 
   selectedProduct: Product;
 
   onSelect(data: Product): void {
-    console.log('selected :', data);
     this.selectedProduct = data;
   }
 

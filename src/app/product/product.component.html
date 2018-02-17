@@ -10,6 +10,7 @@
     </blockquote>
   </div>
 </div>
+<app-product-search></app-product-search>
 <div class="row text-center">
   <div *ngFor="let list of products| slice:0:show; let i=index" class="col-md-4" style="margin-bottom:20px">
     <div class="card">
@@ -20,7 +21,7 @@
         <img *ngIf="list.img" class="img-fluid z-depth-2" src="assets/img/{{list.img}}">
         <div class="mask flex-center waves-effect waves-light" routerLink="/product/{{list.id}}">
           <p class="white-text">{{list.name}}</p>
-      </div>
+        </div>
       </div>
 
       <!--Card content-->

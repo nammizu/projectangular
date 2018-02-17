@@ -1,0 +1,23 @@
+<div id="search-component" class="row">
+  <div class="col-md-12">
+    <div class="pull-right">
+      <mat-form-field>
+        <input matInput #searchBox id="search-box" (keyup)="search(searchBox.value)" placeholder="Search" aria-label="Search">
+      </mat-form-field>
+      <a>
+        <i *ngIf="!searchBox.value" class="fa fa-search" aria-hidden="true"></i>
+      </a>
+      <a>
+        <i *ngIf="searchBox.value" (click)="searchBox.value = '';search(searchBox.value)" class="fa fa-remove" aria-hidden="true"></i>
+      </a>
+
+      <ul *ngIf="searchBox.value" class="search-result">
+        <li *ngFor="let product of products$ | async">
+          <a routerLink="/product/{{product.id}}">
+            {{product.name}}
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

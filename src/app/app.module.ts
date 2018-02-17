@@ -4,6 +4,8 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { HttpClientModule } from '@angular/common/http';
 import {
   MatAutocompleteModule,
   MatButtonModule,
@@ -46,14 +48,16 @@ import { DetailProductComponent } from './detail-product/detail-product.componen
 import { ProductService } from './product.service';
 import { MessagesComponent } from './messages/messages.component';
 import { MessageService } from './message.service';
-
+import { InMemoryDataService } from './in-memory-data.service';
+import { ProductSearchComponent } from './product-search/product-search.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProductComponent,
     DetailProductComponent,
-    MessagesComponent
+    MessagesComponent,
+    ProductSearchComponent
   ],
   imports: [
     BrowserModule,
@@ -92,7 +96,11 @@ import { MessageService } from './message.service';
     MatTabsModule,
     MatToolbarModule,
     MatTooltipModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule,
+    HttpClientInMemoryWebApiModule.forRoot(
+      InMemoryDataService, { dataEncapsulation: false }
+    )
   ],
   schemas: [NO_ERRORS_SCHEMA],
   providers: [ProductService, MessageService],
